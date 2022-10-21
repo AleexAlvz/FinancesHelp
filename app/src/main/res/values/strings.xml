@@ -4,4 +4,8 @@
     <string name="email">Email</string>
     <string name="senha">Senha</string>
     <string name="cart_description">Icone de um carrinho de compras</string>
+    <string name="or">ou</string>
+    <string name="entrar">Entrar</string>
+    <string name="crie_uma_nova_conta">Crie uma nova conta</string>
+    <string name="esqueceu_sua_senha_clique_aqui">Esqueceu sua senha? Clique aqui</string>
 </resources>
