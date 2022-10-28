@@ -10,11 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ClothingDelivery"
+        android:theme="@style/Theme.FinancesHelp"
         tools:targetApi="31" >
 
-        <activity
-            android:name=".feature.splashscreen.view.SplashScreenActivity"
+        <activity android:name=".feature.login.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".feature.login.view.LoginActivity"/>
+        <activity android:name=".feature.home.HomeActivity"/>
     </application>
 
 </manifest>

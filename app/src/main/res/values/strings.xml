@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Clothing Delivery</string>
+    <string name="app_name">Finances Help</string>
     <string name="login">LOGIN</string>
     <string name="email">Email</string>
     <string name="senha">Senha</string>
@@ -8,4 +8,5 @@
     <string name="entrar">Entrar</string>
     <string name="crie_uma_nova_conta">Crie uma nova conta</string>
     <string name="esqueceu_sua_senha_clique_aqui">Esqueceu sua senha? Clique aqui</string>
+    <string name="continue_de_onde_parou">Continue de onde parou</string>
 </resources>
