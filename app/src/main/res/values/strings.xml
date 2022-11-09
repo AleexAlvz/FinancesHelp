@@ -9,4 +9,7 @@
     <string name="crie_uma_nova_conta">Crie uma nova conta</string>
     <string name="esqueceu_sua_senha_clique_aqui">Esqueceu sua senha? Clique aqui</string>
     <string name="continue_de_onde_parou">Continue de onde parou</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="conclusion_text">Concluído (100%)</string>
 </resources>

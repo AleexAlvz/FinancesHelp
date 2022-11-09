@@ -13,4 +13,6 @@
     <color name="gray">#303030</color>
     <color name="soft_blue">#4885FF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="yellow_in_progress">#E1C616</color>
+    <color name="green_done">#5DBF1F</color>
 </resources>

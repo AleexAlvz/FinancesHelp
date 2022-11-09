@@ -22,7 +22,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/last_studies_list"
+        android:id="@+id/latest_studies_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -44,7 +44,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/last_studies_list" />
+        app:layout_constraintTop_toBottomOf="@id/latest_studies_recycler_view" />
 
     <ImageView
         android:layout_width="30dp"
