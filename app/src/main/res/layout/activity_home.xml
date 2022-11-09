@@ -3,14 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/home_text_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingBottom="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Bem vindo, cliente :)"
+        android:maxLines="1"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/latest_studies_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_text_welcome"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout="@layout/fragment_latest_studies"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
