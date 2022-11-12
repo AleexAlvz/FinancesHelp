@@ -1,10 +1,10 @@
-package com.aleexalvz.financeshelp.feature.home.lateststudies.adapter
+package com.aleexalvz.financeshelp.feature.home.suggestions.adapter
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class MarginItemDecoration(
+class VerticalMarginItemDecoration(
     private val spaceSize: Int
 ) : RecyclerView.ItemDecoration() {
 
@@ -17,7 +17,7 @@ class MarginItemDecoration(
         super.getItemOffsets(outRect, view, parent, state)
         with(outRect) {
             if (parent.getChildAdapterPosition(view) != parent.adapter?.itemCount?.minus(1)){
-                right = spaceSize
+                bottom = spaceSize
             }
         }
     }

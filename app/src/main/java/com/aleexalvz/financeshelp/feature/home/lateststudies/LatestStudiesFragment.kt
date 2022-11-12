@@ -15,11 +15,11 @@ import androidx.lifecycle.ViewModelStore
 import androidx.viewpager2.widget.ViewPager2
 import com.aleexalvz.financeshelp.R
 import com.aleexalvz.financeshelp.commons.model.Course
-import com.aleexalvz.financeshelp.commons.model.LatestStudiesViewState
+import com.aleexalvz.financeshelp.feature.home.lateststudies.model.LatestStudiesViewState
 import com.aleexalvz.financeshelp.feature.home.lateststudies.adapter.LatestStudiesAdapter
-import com.aleexalvz.financeshelp.feature.home.lateststudies.adapter.MarginItemDecoration
-import com.aleexalvz.financeshelp.feature.home.viewmodel.LatestStudiesViewModel
-import com.aleexalvz.financeshelp.feature.home.viewmodel.LatestStudiesViewModelFactory
+import com.aleexalvz.financeshelp.feature.home.lateststudies.adapter.HorizontalMarginItemDecoration
+import com.aleexalvz.financeshelp.feature.home.lateststudies.viewmodel.LatestStudiesViewModel
+import com.aleexalvz.financeshelp.feature.home.lateststudies.viewmodel.LatestStudiesViewModelFactory
 
 class LatestStudiesFragment : Fragment() {
 
@@ -40,7 +40,7 @@ class LatestStudiesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = layoutInflater.inflate(R.layout.fragment_latest_studies, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_latest_studies, container, false)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,7 +74,7 @@ class LatestStudiesFragment : Fragment() {
 
     private fun configureViewPager() {
         val itemDecoration =
-            MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.card_margin))
+            HorizontalMarginItemDecoration(resources.getDimensionPixelSize(R.dimen.card_margin))
         viewPager.addItemDecoration(itemDecoration)
         adapter = LatestStudiesAdapter()
 
@@ -118,14 +118,14 @@ class LatestStudiesFragment : Fragment() {
                 is LatestStudiesViewState.FailureInFetchCourses -> {}
                 is LatestStudiesViewState.FetchingCourses -> {}
                 is LatestStudiesViewState.FetchedCourses -> {
-                    configureRecyclerView(it.courseList)
+                    insertCourseList(it.courseList)
                 }
             }
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun configureRecyclerView(courseList: List<Course>) {
+    private fun insertCourseList(courseList: List<Course>) {
         adapter.insertCourseList(courseList)
         adapter.notifyDataSetChanged()
         configureCarouselDots(courseList.size)

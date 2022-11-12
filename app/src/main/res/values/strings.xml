@@ -13,4 +13,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="conclusion_text">Concluído (100%)</string>
     <string name="dotted">&#8226;</string>
+    <string name="search">Busca</string>
+    <string name="sugestoes_cursos">Avance para o próximo nível</string>
+    <string name="sugestoes_cursos_descricao">Veja nossas sugestões de próximos estudos para que você domine ainda mais as finanças</string>
 </resources>

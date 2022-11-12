@@ -1,10 +1,10 @@
-package com.aleexalvz.financeshelp.feature.home.viewmodel
+package com.aleexalvz.financeshelp.feature.home.lateststudies.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aleexalvz.financeshelp.commons.model.Course
-import com.aleexalvz.financeshelp.commons.model.LatestStudiesViewState
+import com.aleexalvz.financeshelp.feature.home.lateststudies.model.LatestStudiesViewState
 import java.lang.Exception
 
 class LatestStudiesViewModel: ViewModel() {

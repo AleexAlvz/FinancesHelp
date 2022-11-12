@@ -3,9 +3,10 @@ package com.aleexalvz.financeshelp.feature.home
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentContainerView
 import com.aleexalvz.financeshelp.R
+import com.aleexalvz.financeshelp.feature.appbar.AppBarFragment
 import com.aleexalvz.financeshelp.feature.home.lateststudies.LatestStudiesFragment
+import com.aleexalvz.financeshelp.feature.home.suggestions.SuggestionsFragment
 
 class HomeActivity: FragmentActivity() {
 
@@ -21,12 +22,14 @@ class HomeActivity: FragmentActivity() {
     }
 
     private fun initViews() {
-        addFragment(R.id.latest_studies_container, LatestStudiesFragment() )
+        addFragment(R.id.home_app_bar_container, AppBarFragment())
+        addFragment(R.id.latest_studies_container, LatestStudiesFragment())
+        addFragment(R.id.next_course_suggestions_container, SuggestionsFragment())
     }
 
     private fun addFragment(containerView: Int, fragment: Fragment) =
         supportFragmentManager
             .beginTransaction()
-            .add(containerView, fragment)
+            .replace(containerView, fragment)
             .commit()
 }

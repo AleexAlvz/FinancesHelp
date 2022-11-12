@@ -1,4 +1,4 @@
-package com.aleexalvz.financeshelp.feature.home.viewmodel
+package com.aleexalvz.financeshelp.feature.home.lateststudies.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
