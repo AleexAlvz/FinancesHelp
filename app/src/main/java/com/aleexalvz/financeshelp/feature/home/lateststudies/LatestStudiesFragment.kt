@@ -1,6 +1,7 @@
 package com.aleexalvz.financeshelp.feature.home.lateststudies
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +17,7 @@ import androidx.lifecycle.ViewModelStore
 import androidx.viewpager2.widget.ViewPager2
 import com.aleexalvz.financeshelp.R
 import com.aleexalvz.financeshelp.commons.model.Course
+import com.aleexalvz.financeshelp.feature.course.CourseActivity
 import com.aleexalvz.financeshelp.feature.home.lateststudies.model.LatestStudiesViewState
 import com.aleexalvz.financeshelp.feature.home.lateststudies.adapter.LatestStudiesAdapter
 import com.aleexalvz.financeshelp.feature.home.lateststudies.adapter.HorizontalMarginItemDecoration
@@ -74,7 +77,9 @@ class LatestStudiesFragment : Fragment() {
         val itemDecoration =
             HorizontalMarginItemDecoration(resources.getDimensionPixelSize(R.dimen.card_margin))
         viewPager.addItemDecoration(itemDecoration)
-        adapter = LatestStudiesAdapter()
+        adapter = LatestStudiesAdapter { course ->
+            onCourseClickListener(course)
+        }
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -84,6 +89,11 @@ class LatestStudiesFragment : Fragment() {
         })
 
         viewPager.adapter = adapter
+    }
+
+    private fun onCourseClickListener(course: Course){
+        Toast.makeText(requireContext(), "ITEM CLICADO: ${course.title}", Toast.LENGTH_LONG).show()
+        startActivity(Intent(requireContext(), CourseActivity::class.java))
     }
 
     private fun configureCarouselDots(size: Int, position: Int = 0) {

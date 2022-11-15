@@ -13,7 +13,9 @@ import com.aleexalvz.financeshelp.commons.extension.setInvisible
 import com.aleexalvz.financeshelp.commons.extension.setVisible
 import com.aleexalvz.financeshelp.commons.model.Course
 
-class SuggestionsAdapter : RecyclerView.Adapter<SuggestionsAdapter.SuggestionAdapterViewHolder>() {
+class SuggestionsAdapter(
+    private val onItemClickListener: ((course: Course) -> Unit)
+) : RecyclerView.Adapter<SuggestionsAdapter.SuggestionAdapterViewHolder>() {
 
     private var courseList: List<Course>? = null
 
@@ -27,13 +29,13 @@ class SuggestionsAdapter : RecyclerView.Adapter<SuggestionsAdapter.SuggestionAda
     }
 
     override fun onBindViewHolder(holder: SuggestionAdapterViewHolder, position: Int) {
-        courseList?.get(position)?.let {
-            holder.title.text = it.title
-            holder.description.text = it.description
-
-            when (it.percentForComplete) {
+        courseList?.get(position)?.let { course ->
+            holder.title.text = course.title
+            holder.description.text = course.description
+            holder.itemView.setOnClickListener { onItemClickListener.invoke(course) }
+            when (course.percentForComplete) {
                 0 -> holder.progressView.setInvisible()
-                in 1..99 -> setInProgress(holder, it)
+                in 1..99 -> setInProgress(holder, course)
                 100 -> setDone(holder)
             }
         }

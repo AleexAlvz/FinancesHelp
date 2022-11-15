@@ -19,15 +19,21 @@ class SuggestionsViewModel: ViewModel() {
 
         try {
             val lastStudies = mutableListOf<Course>(
-                Course("Calculos com porcentagem",
+                Course(
+                    1,
+                    "Calculos com porcentagem",
                     "Aprenda como fazer calculos com porcentagem e tenha uma visão de como está sua vida financeira de forma mais clara.",
                     100,
                     true),
-                Course("CDB: O que é?",
+                Course(
+                    2,
+                    "CDB: O que é?",
                     "Descubra o que é CDB e o por que investir nele",
                     0,
                     false),
-                Course("O quanto preciso economizar?",
+                Course(
+                    3,
+                    "O quanto preciso economizar?",
                     "Entenda o quanto você precisa economizar para ter segurança e alcançar seus objetivos",
                     80,
                     false)

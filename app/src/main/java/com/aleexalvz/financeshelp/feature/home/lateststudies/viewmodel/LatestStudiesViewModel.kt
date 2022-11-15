@@ -18,15 +18,21 @@ class LatestStudiesViewModel: ViewModel() {
 
         try {
             val lastStudies = mutableListOf<Course>(
-                Course("Curso 1: Primeiros passos",
+                Course(
+                    1,
+                    "Curso 1: Primeiros passos",
                     "Aprenda como iniciar no mundo financeiro",
                     34,
                     false),
-                Course("Curso 2: Avançando",
+                Course(
+                    2,
+                    "Curso 2: Avançando",
                     "Continue seu aprendizado aprendendo novas coisas",
                     0,
                     false),
-                Course("Curso 3: Dominando o mundo financeiro",
+                Course(
+                    3,
+                    "Curso 3: Dominando o mundo financeiro",
                     "Se especializando no mundo financeiro, possibilitando maior independencia financeira",
                     100,
                     true)

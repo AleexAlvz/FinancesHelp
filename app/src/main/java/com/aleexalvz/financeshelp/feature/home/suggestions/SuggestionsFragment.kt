@@ -1,16 +1,19 @@
 package com.aleexalvz.financeshelp.feature.home.suggestions
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aleexalvz.financeshelp.R
 import com.aleexalvz.financeshelp.commons.model.Course
+import com.aleexalvz.financeshelp.feature.course.CourseActivity
 import com.aleexalvz.financeshelp.feature.home.lateststudies.adapter.LatestStudiesAdapter
 import com.aleexalvz.financeshelp.feature.home.suggestions.adapter.SuggestionsAdapter
 import com.aleexalvz.financeshelp.feature.home.suggestions.adapter.VerticalMarginItemDecoration
@@ -59,7 +62,9 @@ class SuggestionsFragment: Fragment() {
         recyclerView.addItemDecoration(marginDecoration)
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
-        adapter = SuggestionsAdapter()
+        adapter = SuggestionsAdapter{ course ->
+            onCourseClickListener(course)
+        }
         recyclerView.adapter = adapter
     }
 
@@ -71,6 +76,11 @@ class SuggestionsFragment: Fragment() {
                 is SuggestionsViewState.FailureInFetchCourses -> {}
             }
         }
+    }
+
+    private fun onCourseClickListener(course: Course){
+        Toast.makeText(requireContext(), "ITEM CLICADO: ${course.title}", Toast.LENGTH_LONG).show()
+        startActivity(Intent(requireContext(), CourseActivity::class.java))
     }
 
     @SuppressLint("NotifyDataSetChanged")

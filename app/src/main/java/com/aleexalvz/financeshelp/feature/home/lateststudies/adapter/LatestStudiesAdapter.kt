@@ -13,7 +13,9 @@ import com.aleexalvz.financeshelp.commons.extension.setInvisible
 import com.aleexalvz.financeshelp.commons.extension.setVisible
 import com.aleexalvz.financeshelp.commons.model.Course
 
-class LatestStudiesAdapter : RecyclerView.Adapter<LatestStudiesAdapter.LatestStudiesAdapterViewHolder>() {
+class LatestStudiesAdapter(
+    private val onItemClickListener: ((course: Course) -> Unit)
+) : RecyclerView.Adapter<LatestStudiesAdapter.LatestStudiesAdapterViewHolder>() {
 
     private var courseList: List<Course>? = null
 
@@ -21,18 +23,20 @@ class LatestStudiesAdapter : RecyclerView.Adapter<LatestStudiesAdapter.LatestStu
         parent: ViewGroup,
         viewType: Int
     ): LatestStudiesAdapterViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_pager_course_menu, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.view_pager_course_menu, parent, false)
         return LatestStudiesAdapterViewHolder(view, parent.context)
     }
 
     override fun onBindViewHolder(holder: LatestStudiesAdapterViewHolder, position: Int) {
-        courseList?.get(position)?.let {
-            holder.title.text = it.title
-            holder.description.text = it.description
+        courseList?.get(position)?.let { course ->
+            holder.title.text = course.title
+            holder.description.text = course.description
+            holder.itemView.setOnClickListener { onItemClickListener.invoke(course) }
 
-            when (it.percentForComplete) {
+            when (course.percentForComplete) {
                 0 -> holder.progressView.setInvisible()
-                in 1..99 -> setInProgress(holder, it)
+                in 1..99 -> setInProgress(holder, course)
                 100 -> setDone(holder)
             }
         }
@@ -47,7 +51,8 @@ class LatestStudiesAdapter : RecyclerView.Adapter<LatestStudiesAdapter.LatestStu
 
     private fun setInProgress(holder: LatestStudiesAdapterViewHolder, course: Course) {
         holder.progressView.setVisible()
-        val colorDrawable = AppCompatResources.getDrawable(holder.context, R.color.yellow_in_progress)
+        val colorDrawable =
+            AppCompatResources.getDrawable(holder.context, R.color.yellow_in_progress)
         holder.progressView.background = colorDrawable
         val progressText = "Em progresso (${course.percentForComplete}%)"
         holder.progressText.text = progressText
@@ -55,7 +60,7 @@ class LatestStudiesAdapter : RecyclerView.Adapter<LatestStudiesAdapter.LatestStu
 
     override fun getItemCount(): Int = courseList?.size ?: 0
 
-    fun insertCourseList(newCourseList: List<Course>){
+    fun insertCourseList(newCourseList: List<Course>) {
         courseList = newCourseList
     }
 
