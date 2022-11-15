@@ -46,15 +46,13 @@ class LatestStudiesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews(view)
+        setListeners()
+        configureViewPager()
+        observeViewStates()
     }
 
     override fun onResume() {
         super.onResume()
-
-        setListeners()
-        configureViewPager()
-        observeViewStates()
-
         latestStudiesViewModel.getLatestStudies()
     }
 
